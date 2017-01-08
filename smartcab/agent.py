@@ -80,7 +80,7 @@ class LearningAgent(Agent):
         self.next_waypoint = self.planner.next_waypoint()
 
         choose_at_random = random.random() < self.epsilon
-        if (self.learning and choose_at_random):
+        if (not self.learning or choose_at_random):
             actions = self.valid_actions
         else:
             maxq = self.get_maxQ(state)
